@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bringing Data From API</title>
+    <style>
+        #chucks {
+            background-color: lightblue;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="background-color:blueviolet">Bringing Data using API</h1>
+
+    <label>What's Chuck doing today?</label>
+    <p id="chucks"></p>
+    <button onclick="validate()" style="background-color: aqua;">Click button</button>
+    
+    <script>
+        function validate() {
+            fetch('https://api.chucknorris.io/jokes/random?category=food')
+                .then(response => response.json())
+                .then(json => document.getElementById("chucks").innerHTML = json.value)
+                .catch(error => console.log('unable to reach URL' + error));
+        }
+    </script>
+</body>
+</html>
